@@ -69,6 +69,12 @@ const patientSchema = new mongoose.Schema({
         enum: ['Admitted', 'Discharged', 'Critical', 'Outpatient', 'Recovery'],
         default: 'Admitted'
     },
+    // NEW FEATURE: Clinical Vitals
+    vitals: {
+        heartRate: { type: Number, default: 0 },      // BPM
+        bloodPressure: { type: String, default: 'N/A' }, // e.g. 120/80
+        temperature: { type: Number, default: 36.5 }  // Celsius
+    },
     roomNumber: { type: String, default: 'TBA' },
     notes: { type: String, trim: true },
     // Automatically sets the timestamp when the record is created
@@ -195,6 +201,7 @@ app.post('/delete/:id', async (req, res) => {
 // Only start listening for user requests AFTER the database connects successfully.
 connectDB().then(() => {
     app.listen(PORT, () => {
-        console.log(`🚀 EHR Server running on port ${PORT}`);
+        console.log(`EHR Server running on port ${PORT}`);
+        console.log(`Open your browser and type: http://localhost:${PORT} 🚀`);
     });
 });

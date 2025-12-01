@@ -32,9 +32,25 @@
                         </div>
                     </div>
 
+                    <!-- NEW: Vitals Section -->
+                    <h6 class="text-danger border-bottom pb-2 mb-3 mt-4">Current Vitals</h6>
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <label class="form-label small fw-bold">HEART RATE</label>
+                            <input type="number" class="form-control" name="vitals[heartRate]" value="<%= patient.vitals ? patient.vitals.heartRate : 0 %>">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label small fw-bold">BP</label>
+                            <input type="text" class="form-control" name="vitals[bloodPressure]" value="<%= patient.vitals ? patient.vitals.bloodPressure : 'N/A' %>">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label small fw-bold">TEMP (°C)</label>
+                            <input type="number" step="0.1" class="form-control" name="vitals[temperature]" value="<%= patient.vitals ? patient.vitals.temperature : 0 %>">
+                        </div>
+                    </div>
+
                     <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Clinical Details</h6>
                     
-                    <!-- NEW: Department Edit -->
                     <div class="mb-3">
                         <label class="form-label small fw-bold">DEPARTMENT</label>
                         <select class="form-select" name="department">
